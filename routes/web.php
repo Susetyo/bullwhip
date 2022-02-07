@@ -34,13 +34,13 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth','verified'])->group(function(){
+Route::middleware(['auth','verified'])->group(function(){    
     Route::get('/roles',[RolesController::class,'index'])->name('roles');
-    Route::get('/role',[RolesController::class,'create']);
-    Route::post('/role',[RolesController::class,'store']);
-    Route::get('/role/{id}',[RolesController::class,'edit']);
-    Route::put('/role/{id}',[RolesController::class,'update']);
-    Route::delete('/role/{id}',[RolesController::class,'destroy']);
+    Route::get('/role',[RolesController::class,'create'])->name('roles.create');
+    Route::post('/role',[RolesController::class,'store'])->name('roles.store');
+    Route::get('/role/{id}',[RolesController::class,'edit'])->name('roles.edit');
+    Route::put('/role/{id}',[RolesController::class,'update'])->name('roles.update');
+    Route::delete('/role/{id}',[RolesController::class,'destroy'])->name('roles.destroy');
 });
 
 require __DIR__.'/auth.php';
