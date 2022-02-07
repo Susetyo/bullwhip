@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\ItemsController;
 use Inertia\Inertia;
 
 /*
@@ -41,6 +42,13 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/role/{id}',[RolesController::class,'edit'])->name('roles.edit');
     Route::put('/role/{id}',[RolesController::class,'update'])->name('roles.update');
     Route::delete('/role/{id}',[RolesController::class,'destroy'])->name('roles.destroy');
+
+    Route::get('/items',[ItemsController::class,'index'])->name('items');
+    Route::get('/item',[ItemsController::class,'create'])->name('items.create');
+    Route::post('/item',[ItemsController::class,'store'])->name('items.store');
+    Route::get('/item/{id}',[ItemsController::class,'edit'])->name('items.edit');
+    Route::put('/item/{id}',[ItemsController::class,'update'])->name('items.update');
+    Route::delete('/item/{id}',[ItemsController::class,'destroy'])->name('items.destroy');
 });
 
 require __DIR__.'/auth.php';

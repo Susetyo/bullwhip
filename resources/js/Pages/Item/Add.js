@@ -7,9 +7,9 @@ import { Head, useForm } from '@inertiajs/inertia-react';
 import Authenticated from '@/Layouts/Authenticated';
 import Box from '@/Layouts/Box'
 
-export default function Edit({auth,errors,role_by_id}) {
-    const { data, setData, put, processing, errors:errosForm } = useForm({
-        name: role_by_id.name,
+export default function Edit({auth,errors}) {
+    const { data, setData, post, processing, errors:errosForm } = useForm({
+        name: '',
     });
 
     const onHandleChange = (event) => {
@@ -18,14 +18,14 @@ export default function Edit({auth,errors,role_by_id}) {
 
     const submit = (e) => {
         e.preventDefault();
-        put(route('roles.update',[{id:role_by_id.id}]));
+        post(route('items.store'));
     };
 
     return (
         <Authenticated         
           auth={auth}
           errors={errors}
-          header={<h1 className="font-semibold text-2xl text-white leading-tight">Edit Role</h1>}
+          header={<h1 className="font-semibold text-2xl text-white leading-tight">Add Item</h1>}
         >
           <Head title="Edit Role" />
             <div className="py-12">

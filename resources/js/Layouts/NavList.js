@@ -10,7 +10,7 @@ export default function NavList({role_id}){
         <NavLink href={route('roles')} active={route().current('roles')}>
           Roles
         </NavLink>
-        <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+        <NavLink href={route('items')} active={route().current('items')}>
           Items
         </NavLink>
         <NavLink href={route('dashboard')} active={route().current('dashboard')}>
