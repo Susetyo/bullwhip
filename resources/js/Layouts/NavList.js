@@ -1,6 +1,7 @@
 import NavLink from '@/Components/NavLink';
 export default function NavList({role_id}){
-  console.log(role_id,'role_id')
+
+  console.log(route())
   if(role_id === 1){
     return(
       <>
@@ -13,7 +14,7 @@ export default function NavList({role_id}){
         <NavLink href={route('items')} active={route().current('items')}>
           Items
         </NavLink>
-        <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+        <NavLink href={route('users')} active={route().current('users')}>
           Users
         </NavLink>
       </>

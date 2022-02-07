@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\UsersController;
 use Inertia\Inertia;
 
 /*
@@ -17,15 +18,6 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
@@ -49,6 +41,11 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/item/{id}',[ItemsController::class,'edit'])->name('items.edit');
     Route::put('/item/{id}',[ItemsController::class,'update'])->name('items.update');
     Route::delete('/item/{id}',[ItemsController::class,'destroy'])->name('items.destroy');
+
+    Route::get('/users',[UsersController::class,'index'])->name('users');
+    Route::get('/user',[UsersController::class,'create'])->name('users.create');
+    Route::post('/user',[UsersController::class,'store'])->name('users.store');
+    Route::delete('/users/{id}',[UsersController::class,'destroy'])->name('users.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -31,15 +31,15 @@ class ItemsController extends Controller
 
     public function update(Request $request, $id){
         $request->validate(['name'=>'required']);
-        $role_by_id=Item::find($id);
-        $role_by_id->name=$request->name;
-        $role_by_id->save();
+        $item=Item::find($id);
+        $item->name=$request->name;
+        $item->save();
         return redirect('/items');    
     }
 
     public function destroy($id){
-        $role_by_id=Item::find($id);
-        $role_by_id->delete();
+        $item=Item::find($id);
+        $item->delete();
         return redirect('/items');
     }
 }
